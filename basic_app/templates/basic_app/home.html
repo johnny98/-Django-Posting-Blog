@@ -1,0 +1,18 @@
+{% extends "basic_app/base.html" %} <!-- extending tamplate form base.html -->
+{% load humanize %}
+{% block content %} <!-- code block that inserting to base template -->
+    {% for post in posts %}
+    <!-- iterate through posts on feed -->
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted|date:"d M " }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+            <small class="text-muted">{{ post.date_posted|naturaltime}}</small>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
